@@ -1,0 +1,20 @@
+groups:
+  - name: 5g-anomaly-alerts
+    rules:
+      - alert: HighAnomalyRate
+        expr: anomaly_rate_recent > 0.15
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High anomaly rate detected"
+          description: "anomaly_rate_recent is {{ $value }} (> 0.15) for 2m"
+
+      - alert: ConsumerStopped
+        expr: rate(events_consumed_total[2m]) == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Consumer appears stopped"
+          description: "No events consumed for 2 minutes"

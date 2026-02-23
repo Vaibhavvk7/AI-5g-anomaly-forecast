@@ -1,0 +1,5 @@
+bootstrap_servers: "localhost:9092"
+topic_telemetry: "telemetry.5g"
+topic_anomalies: "telemetry.5g.anomalies"
+topic_forecasts: "telemetry.5g.forecasts"
+consumer_group: "5g-infer-group"
